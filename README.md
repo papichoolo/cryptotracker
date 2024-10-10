@@ -5,3 +5,4 @@ https://cryptosentimenttracker.streamlit.app
 
 2.1) Add more cryptocurrencies and group them into conventional coins, memecoins and other types of coins.
 2.2) Create function calling tools to compare and explain the various analysis tools.
+Some other things
