@@ -13,7 +13,7 @@ def safe_lower(value):
 def main():
     st.set_page_config(page_title="Crypto News Analyzer", page_icon=":newspaper:", layout="wide")
 
-    st.title("Crypto News Analyzer!")
+    st.title("Crypto News Analyzer")
 
     # Button in the sidebar to trigger the scraper function
     if st.sidebar.button("Fetch Latest News"):
