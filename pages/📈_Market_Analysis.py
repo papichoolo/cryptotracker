@@ -3,14 +3,68 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 import os
-from summarizer import summarize_news_article
+#from summarizer import summarize_news_article
 
-st.set_page_config(page_title="Your Desired Page Title", page_icon=":icon_emoji:")
+st.set_page_config(page_title="Market Analysis", page_icon=":icon_emoji:")
 # Define the directory where the OHLCV data is stored
 data_dir = 'crypto_data/'
 
+crypto_names = {
+    'AAVE_ohlcv': 'Aave',
+    'ADA_ohlcv': 'Cardano',
+    'APT_ohlcv': 'Aptos',
+    'ARB_ohlcv': 'Arbitrum',
+    'AR_ohlcv': 'Arweave',
+    'ATOM_ohlcv': 'Cosmos',
+    'AVAX_ohlcv': 'Avalanche',
+    'BCH_ohlcv': 'Bitcoin Cash',
+    'BNB_ohlcv': 'Binance Coin',
+    'BTC_ohlcv': 'Bitcoin',
+    'CRO_ohlcv': 'Crypto.com Coin',
+    'DAI_ohlcv': 'Dai',
+    'DOGE_ohlcv': 'Dogecoin',
+    'DOT_ohlcv': 'Polkadot',
+    'ETC_ohlcv': 'Ethereum Classic',
+    'ETH_ohlcv': 'Ethereum',
+    'FDUSD_ohlcv': 'First Digital USD',
+    'FET_ohlcv': 'Fetch.ai',
+    'FIL_ohlcv': 'Filecoin',
+    'HBAR_ohlcv': 'Hedera',
+    'ICP_ohlcv': 'Internet Computer',
+    'IMX_ohlcv': 'Immutable',
+    'INJ_ohlcv': 'Injective',
+    'KAS_ohlcv': 'Kaspa',
+    'LINK_ohlcv': 'Chainlink',
+    'LTC_ohlcv': 'Litecoin',
+    'MATIC_ohlcv': 'Polygon',
+    'MKR_ohlcv': 'Maker',
+    'MNT_ohlcv': 'Mantle',
+    'NEAR_ohlcv': 'NEAR Protocol',
+    'OP_ohlcv': 'Optimism',
+    'PEPE_ohlcv': 'Pepe',
+    'RENDER_ohlcv': 'Render Token',
+    'SHIB_ohlcv': 'Shiba Inu',
+    'SOL_ohlcv': 'Solana',
+    'STX_ohlcv': 'Stacks',
+    'SUI_ohlcv': 'Sui',
+    'TAO_ohlcv': 'Lamden',
+    'TON_ohlcv': 'Toncoin',
+    'TRX_ohlcv': 'TRON',
+    'UNI_ohlcv': 'Uniswap',
+    'USDC_ohlcv': 'USD Coin',
+    'VET_ohlcv': 'VeChain',
+    'WIF_ohlcv': 'WiFi Coin',
+    'XLM_ohlcv': 'Stellar',
+    'XMR_ohlcv': 'Monero',
+    'XRP_ohlcv': 'Ripple'
+}
+
+
+
 # Get the list of available cryptocurrencies (assuming each file is named after the cryptocurrency)
 cryptos = [f.split('.')[0] for f in os.listdir(data_dir) if f.endswith('_ohlcv.csv')]
+
+print(cryptos)
 
 # Streamlit UI for selecting cryptocurrency
 st.title('Cryptocurrency OHLCV Data Viewer')
